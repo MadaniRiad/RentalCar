@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import ReservationForm from "@/components/ReservationForm";
+
 
 type CarId = "mercedes-s" | "mercedes-v" | "mercedes-e" | "landrover-sport";
 
@@ -17,10 +19,12 @@ export default function VoitureDetail({ params }: { params: { id: CarId } }) {
   }
 
   return (
+    
     <div className="max-w-3xl mx-auto py-10 px-4">
       <h1 className="text-3xl font-bold mb-4">{car.nom}</h1>
       <p className="text-lg text-gray-700 mb-2">Prix : {car.prix}</p>
       <p>Description détaillée à venir...</p>
+      <ReservationForm carName={car.nom} />
     </div>
   );
 }
