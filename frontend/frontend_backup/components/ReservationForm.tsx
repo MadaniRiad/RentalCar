@@ -20,10 +20,41 @@ const ReservationForm = ({ carName }: ReservationFormProps) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Réservation :", { voiture: carName, ...form });
-    alert("Demande de réservation envoyée !");
+
+    const formData = {
+      nom: form.nom,
+      email: form.email,
+      telephone: form.telephone,
+      permis: form.permis,
+      dateDebut: form.dateDebut,
+      dateFin: form.dateFin,
+      voiture: carName,
+    };
+
+    const res = await fetch("/api/reservations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await res.json();
+    if (result.success) {
+      alert("Réservation enregistrée !");
+      setForm({
+        nom: "",
+        email: "",
+        telephone: "",
+        permis: "",
+        dateDebut: "",
+        dateFin: "",
+      });
+    } else {
+      alert("Erreur lors de la réservation.");
+    }
   };
 
   return (
@@ -64,16 +95,15 @@ const ReservationForm = ({ carName }: ReservationFormProps) => {
           className="p-2 border rounded-md"
         />
 
-              <input
-                  type="text"
-                  name="permis"
-                  id="permis"
-                  value={form.permis || ""}
-                  onChange={handleChange}
-                  required
-                  className="p-2 border rounded-md"
-                  placeholder="N° de Permis de conduire"
-              />
+        <input
+          type="text"
+          name="permis"
+          placeholder="N° de Permis de conduire"
+          value={form.permis}
+          onChange={handleChange}
+          required
+          className="p-2 border rounded-md"
+        />
 
         <input
           type="date"
