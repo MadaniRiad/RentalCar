@@ -1,4 +1,4 @@
-# 🚘 KSR Limousine – Plateforme de Réservation de Voitures de Luxe
+# 🚘 KSR Limousine – Plateforme de Location de Voitures de Luxe
 
 Bienvenue sur le dépôt officiel de la plateforme web de **KSR Limousine**, une entreprise spécialisée dans la **location de véhicules de luxe à Paris, France**. Ce site permet aux clients de consulter les voitures disponibles, visualiser les plus populaires et effectuer une réservation en ligne de manière simple et rapide.
 
