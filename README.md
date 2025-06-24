@@ -43,7 +43,7 @@ npm install
 
 Créer un fichier .env :
 ```
-DATABASE_URL="postgresql://ksr_user:passe123@localhost:5432/ksr_limousine"
+DATABASE_URL="postgresql://user:mot_de_passe@localhost:5432/ksr_limousine"
 ```
 ### 4. Initialiser la base de données
 ```
